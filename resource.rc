@@ -1,0 +1,4 @@
+#include "resource.h"
+
+IDI_MAINICON		ICON "WTF2048.ico"
+IDI_MAINICON_SM		ICON "WTF2048.ico"

@@ -1,0 +1,23 @@
+CXX = g++
+CXXFLAGS = -O3 -Wall
+OBJS = main.o GameController.o Tile.o resource.o
+
+WTF2048: ${OBJS}
+	${CXX} ${OBJS} -s -mwindows -o WTF2048.exe
+
+GameController.o: GameController.cpp GameController.h GameAttributes.h
+	${CXX} -c ${CXXFLAGS} GameController.cpp -o GameController.o
+
+Tile.o: Tile.cpp Tile.h
+	${CXX} -c ${CXXFLAGS} Tile.cpp -o Tile.o
+
+resource.o: resource.rc resource.h WTF2048.ico
+	windres -i resource.rc -o resource.o
+
+main.o: main.cpp resource.h
+	${CXX} -c ${CXXFLAGS} main.cpp -o main.o
+
+clean:
+	del /q *.o
+
+.PHONY: clean
